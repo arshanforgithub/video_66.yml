@@ -12,7 +12,7 @@ on: push #trigger when the repo is pushed
           node-version: 24  # Node JS version
       - name: Installing dependencies 
         run: npm ci
-      - name: Testing 
+      - name: Testing
         run: npm test  # Shell command
 
 
