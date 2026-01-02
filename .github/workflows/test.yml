@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Download the code to the repo
         uses: actions/checkout@v4
-      - name: Install Node JS
+      - name: Install Node js
         uses: actions/setup-node@v4
         with:
           node-version: 20
