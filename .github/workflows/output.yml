@@ -1,0 +1,11 @@
+name: output_file
+
+on:
+  workflow_dispatch:
+
+jobs:
+  output_file_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output GitHub context
+        run: echo "${{ toJSON(github.event) }}" # github is a context object and event is also the object
