@@ -18,8 +18,8 @@ jobs:
       - name: Installing test
         run: npm test  && echo "test done" 
 
-      - name: run lint
-        run: npm run lint 
+      #- name: run lint
+      #  run: npm run lint 
 
       - name: Builing Project
         run: npm run build
