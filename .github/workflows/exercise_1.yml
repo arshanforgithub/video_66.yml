@@ -21,12 +21,14 @@ jobs:
 
       - name: run lint
         run: npm run lint 
-        
+
       - name: Builing Project
         run: npm run build
 
       - name: Deploy 
-        run: echo "Deployed "   
+        run: echo "Deployed "  
+      
+        
 
       #- name: run listers
       #  uses:  wearerequired/lint-action@v2
