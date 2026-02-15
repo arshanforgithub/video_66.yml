@@ -1,7 +1,5 @@
 name: output_file
-
-on:
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
   output_file_job:
