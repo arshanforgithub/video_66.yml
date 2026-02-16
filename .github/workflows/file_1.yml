@@ -24,6 +24,11 @@ jobs:
       - name: Store_artifact_locally
         run: cp -r dist local-storage
 
+      - name: Upload_artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-build
+          path: dist
 
       - name: Verify_files
         run: |
