@@ -1,9 +1,8 @@
 name: downloading_Code
 
-on: 
-  push:
-    branches:
-      - main  
+on: [push, workflow_dispatch]
+   # branches:
+    #  - main  
 
 jobs:
   Checkout_jobs:
