@@ -1,36 +1,52 @@
-name: checkout_build_store_artifact
+name: downloading_Code
 
-on:
+on: 
   push:
     branches:
-      - main
+      - main  
 
 jobs:
-  checkout_job:
+  Checkout_jobs:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout_the_code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Installing_dependencies
+  install:
+    needs: Checkout_jobs  
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build_code
+      - name: Check Node.js version
+        run: node -v
+
+  build:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and test
         run: |
           npm run build
           npm test
 
-      - name: Store_artifact_locally
-        run: cp -r dist local-storage
-
-      - name: Upload_artifact
+  artifact:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload the Artifact
         uses: actions/upload-artifact@v4
-        with:
+        with: 
           name: my-build
           path: dist
 
-      - name: Verify_files
+      - name: Verify the files
         run: |
-          echo "Files inside local-storage:"
-          ls -R local-storage
+          echo "Files inside dist:"
+          ls -R dist
