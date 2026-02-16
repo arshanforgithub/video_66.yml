@@ -1,0 +1,31 @@
+name: checkout_build_store_artifact
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checkout_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout_the_code
+        uses: actions/checkout@v3
+
+      - name: Installing_dependencies
+        run: npm ci
+
+      - name: Build_code
+        run: |
+          npm run build
+          npm test
+
+      - name: Store_artifact_locally
+        run: cp -r dist local-storage
+
+
+      - name: Verify_files
+        run: |
+          echo "Files inside local-storage:"
+          ls -R local-storage
